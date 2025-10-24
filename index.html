@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Picture Grid - Criador de Colagens Científicas</title>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Painel Superior - Menu -->
+    <header class="top-menu">
+      <nav>
+        <button id="new-project">Novo Projeto</button>
+        <button id="save-project">Salvar Projeto</button>
+        <button id="import-images">Importar Imagens</button>
+        <button id="export-collage">Exportar Colagem</button>
+        <button id="settings">Configurações</button>
+      </nav>
+    </header>
+
+    <!-- Container Principal -->
+    <main class="main-container">
+      <!-- Painel Esquerdo - Ferramentas -->
+      <aside class="left-panel">
+        <section class="grid-config">
+          <h3>Configurações do Grid</h3>
+          <div class="config-group">
+            <label>Colunas:</label>
+            <input type="number" id="grid-cols" value="3" min="1" max="10">
+          </div>
+          <div class="config-group">
+            <label>Linhas:</label>
+            <input type="number" id="grid-rows" value="3" min="1" max="10">
+          </div>
+          <div class="config-group">
+            <label>Espaçamento:</label>
+            <input type="number" id="grid-spacing" value="10" min="0" max="50">
+          </div>
+          <div class="config-group">
+            <label>Margens:</label>
+            <input type="number" id="grid-margin" value="20" min="0" max="100">
+          </div>
+          <div class="config-group">
+            <label>Tipo:</label>
+            <select id="grid-type">
+              <option value="rectangular">Retangular</option>
+              <option value="circular">Circular</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="tools">
+          <h3>Ferramentas</h3>
+          <div class="tool-buttons">
+            <button class="tool-btn active" data-tool="select">Selecionar</button>
+            <button class="tool-btn" data-tool="move">Mover</button>
+            <button class="tool-btn" data-tool="resize">Redimensionar</button>
+            <button class="tool-btn" data-tool="rotate">Rotacionar</button>
+            <button class="tool-btn" data-tool="delete">Apagar</button>
+          </div>
+        </section>
+
+        <section class="zoom-control">
+          <h3>Zoom</h3>
+          <div class="zoom-buttons">
+            <button id="zoom-in">+</button>
+            <span id="zoom-level">100%</span>
+            <button id="zoom-out">-</button>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Painel Central - Preview do Grid -->
+      <section class="center-panel">
+        <div class="grid-container">
+          <div id="grid-preview" class="grid-preview">
+            <!-- Grid será gerado dinamicamente -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Painel Direito - Propriedades -->
+      <aside class="right-panel">
+        <section class="selected-image">
+          <h3>Imagem Selecionada</h3>
+          <div class="image-preview">
+            <div id="selected-preview">Nenhuma imagem selecionada</div>
+          </div>
+          <div class="image-properties">
+            <div class="prop-group">
+              <label>Posição X:</label>
+              <input type="number" id="pos-x" disabled>
+            </div>
+            <div class="prop-group">
+              <label>Posição Y:</label>
+              <input type="number" id="pos-y" disabled>
+            </div>
+            <div class="prop-group">
+              <label>Largura:</label>
+              <input type="number" id="img-width" disabled>
+            </div>
+            <div class="prop-group">
+              <label>Altura:</label>
+              <input type="number" id="img-height" disabled>
+            </div>
+            <div class="prop-group">
+              <label>Rotação:</label>
+              <input type="number" id="rotation" disabled>°
+            </div>
+            <div class="prop-group">
+              <label>Opacidade:</label>
+              <input type="range" id="opacity" min="0" max="100" disabled>
+            </div>
+            <div class="prop-group">
+              <label>Camada:</label>
+              <input type="number" id="z-index" disabled>
+            </div>
+          </div>
+        </section>
+
+        <section class="upload-section">
+          <h3>Upload</h3>
+          <div class="upload-area">
+            <input type="file" id="file-input" multiple accept="image/*" hidden>
+            <button id="upload-btn">Selecionar Arquivos</button>
+            <div id="drop-zone" class="drop-zone">
+              Arraste imagens aqui
+            </div>
+          </div>
+          <div class="image-list">
+            <h4>Imagens Importadas</h4>
+            <div id="imported-images" class="thumbnail-list">
+              <!-- Miniaturas das imagens -->
+            </div>
+          </div>
+        </section>
+
+        <section class="index-properties">
+          <h3>Propriedades de Índice</h3>
+          <div class="index-info">
+            <div class="info-item">
+              <label>Célula:</label>
+              <span id="cell-position">-</span>
+            </div>
+            <div class="info-item">
+              <label>Dimensões Originais:</label>
+              <span id="original-dimensions">-</span>
+            </div>
+            <div class="info-item">
+              <label>Arquivo:</label>
+              <span id="file-name">-</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </body>
+</html>
